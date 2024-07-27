@@ -1,0 +1,13 @@
+.vs/
+
+api/.vs/
+api/bin/
+api/obj/
+
+*.user
+*.suo
+*.log
+*.lock
+*.vspscc
+*.vssscc
+*.sln.docstates
