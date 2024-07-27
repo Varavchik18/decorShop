@@ -19,6 +19,7 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Get
 builder.Services.AddAutoMapper(typeof(Program)); 
 builder.Services.AddDataServices(builder.Configuration);
 
+
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -42,6 +43,7 @@ else
         }
     }
 }
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

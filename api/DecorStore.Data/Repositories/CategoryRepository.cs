@@ -70,4 +70,6 @@ public class CategoryRepository : ICategoryRepository
 
         return sectionList;
     }
+
+    public async Task<bool> IsSectionNameUniqueAsync(string name) => !await _context.Sections.AnyAsync(s => s.Name == name);
 }
