@@ -1,0 +1,8 @@
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.csproj.AssemblyReference.cache
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.AssemblyInfoInputs.cache
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.AssemblyInfo.cs
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.csproj.CoreCompileInputs.cache
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alex Colba\source\repos\OnlineStore\api\obj\Debug\net8.0\OnlineStore.sourcelink.json

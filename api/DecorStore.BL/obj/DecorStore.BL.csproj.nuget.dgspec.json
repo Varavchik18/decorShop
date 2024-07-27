@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\OnlineStore.csproj": {}
+    "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\DecorStore.BL\\DecorStore.BL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\OnlineStore.csproj": {
+    "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\DecorStore.BL\\DecorStore.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\OnlineStore.csproj",
-        "projectName": "OnlineStore",
-        "projectPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\OnlineStore.csproj",
+        "projectUniqueName": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\DecorStore.BL\\DecorStore.BL.csproj",
+        "projectName": "DecorStore.BL",
+        "projectPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\DecorStore.BL\\DecorStore.BL.csproj",
         "packagesPath": "C:\\Users\\Alex Colba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\obj\\",
+        "outputPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\DecorStore.BL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex Colba\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,16 +39,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.4.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -61,9 +51,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

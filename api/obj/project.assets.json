@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\OnlineStore.csproj",
+      "projectUniqueName": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\OnlineStore.csproj",
       "projectName": "OnlineStore",
-      "projectPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\OnlineStore.csproj",
+      "projectPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\OnlineStore.csproj",
       "packagesPath": "C:\\Users\\Alex Colba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\obj\\",
+      "outputPath": "C:\\Users\\Alex Colba\\source\\repos\\OnlineStore\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex Colba\\AppData\\Roaming\\NuGet\\NuGet.Config",
