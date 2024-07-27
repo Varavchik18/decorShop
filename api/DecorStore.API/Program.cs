@@ -5,19 +5,11 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var serilogConnectionString = builder.Configuration.GetConnectionString("Serilog");
-
-Log.Logger = new LoggerConfiguration()
+var logger = Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
-    .Enrich.FromLogContext()
-    .WriteTo.Console()
-    .WriteTo.MSSqlServer(
-        connectionString: serilogConnectionString,
-        tableName: "logs_tb",
-        autoCreateSqlTable: true)
     .CreateLogger();
 
-builder.Host.UseSerilog();
+builder.Logging.AddSerilog(logger);
 
 
 builder.Services.AddControllers();
@@ -28,8 +20,6 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDataServices(builder.Configuration);
 
 var app = builder.Build();
-var logger = app.Services.GetRequiredService<ILogger<Program>>();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -44,11 +34,11 @@ else
         {
             var context = services.GetRequiredService<AppDbContext>();
             context.Database.Migrate();
-            logger.LogDebug("Migrated successfully");
+            logger.Information("Migrated successfully");
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "An error occurred while migrating the database.");
+            logger.Error(ex, "An error occurred while migrating the database.");
         }
     }
 }

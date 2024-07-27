@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DecorStore.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e3782247b67cc9e16774b1fec19de4fde968859")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87f7f56da232fe4dcfd6dfe23a66d51cba8df4fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("DecorStore.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DecorStore.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
