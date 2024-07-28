@@ -11,4 +11,6 @@ public interface ICategoryRepository
     // Checks for validation
     Task<bool> IsSectionNameUniqueAsync(string name);
     Task<bool> IsCategoryNameUniqueInSectionAsync(string name, int sectionId);
+    Task<bool> IsSubCategoryNameUniqueInCategoryAsync(string name, int categoryId);
+
 }

@@ -22,7 +22,6 @@ namespace DecorStore.API.Controllers.Category
         [HttpGet("all")]
         public async Task<IActionResult> GetAllCategories([FromQuery] GetAllCategoriesQuery query)
         {
-            _logger.LogInformation($"GetAllCategories endpoint is called, query parameters : {query}");
             var result = await _mediator.Send(query);
             return Ok(result);
         }
@@ -30,7 +29,6 @@ namespace DecorStore.API.Controllers.Category
         [HttpPost("createSection")]
         public async Task<IActionResult> CreateSection([FromQuery] CreateSectionCommand command)
         {
-            _logger.LogInformation($"CreateSection endpoint is called, query parameters : {command}");
             var result = await _mediator.Send(command);
             return Ok(result);
         }
@@ -38,7 +36,13 @@ namespace DecorStore.API.Controllers.Category
         [HttpPost("createCategory")]
         public async Task<IActionResult> CreateCategory([FromQuery] CreateCategoryCommand command)
         {
-            _logger.LogInformation($"CreateCategory endpoint is called, query parameters : {command}");
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost("createSubCategory")]
+        public async Task<IActionResult> CreateSubCategory([FromQuery] CreateSubCategoryCommand command)
+        {
             var result = await _mediator.Send(command);
             return Ok(result);
         }

@@ -4,6 +4,9 @@ public enum DomainErrorCodes
     SectionNameAlreadyExist,
     CategoryNameAlreadyExistInSection,
     SectionNotFound,
-    CategoryNameIsRequired
+    CategoryNameIsRequired,
+    SubcategoryNameIsRequired,
+    SubcategoryNameAlreadyExistInCategory,
+    CategoryNotFound
 }
 

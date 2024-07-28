@@ -73,4 +73,5 @@ public class CategoryRepository : ICategoryRepository
     public async Task<bool> IsCategoryNameUniqueInSectionAsync(string name, int sectionId) => !await _context.Categories.AnyAsync(c => c.Name == name && c.SectionId == sectionId);
 
     public async Task<bool> IsSectionNameUniqueAsync(string name) => !await _context.Sections.AnyAsync(s => s.Name == name);
+    public async Task<bool> IsSubCategoryNameUniqueInCategoryAsync(string name, int categoryId) => !await _context.Subcategories.AnyAsync(sc => sc.Name == name && sc.CategoryId == categoryId);
 }
