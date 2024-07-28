@@ -7,6 +7,7 @@ public interface ICategoryRepository
     Task AddAsync(CategoryAggregate aggregate);
     Task UpdateAsync(CategoryAggregate aggregate);
     Task DeleteAsync(int sectionId);
+    void RemoveAggregate(CategoryAggregate aggregate);
 
     // Checks for validation
     Task<bool> IsSectionNameUniqueAsync(string name);

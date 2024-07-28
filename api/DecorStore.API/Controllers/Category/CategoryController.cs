@@ -1,8 +1,8 @@
 ﻿using DecorStore.API.Controllers.Requests.Category;
+using DecorStore.API.Controllers.Requests.Category.Commands;
+using DecorStore.API.Controllers.Requests.Category.Commands.Section;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
 
 namespace DecorStore.API.Controllers.Category
 {
@@ -19,13 +19,16 @@ namespace DecorStore.API.Controllers.Category
             _logger = logger;
         }
 
-        [HttpGet("all")]
+        [HttpGet("getAll")]
         public async Task<IActionResult> GetAllCategories([FromQuery] GetAllCategoriesQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
         }
 
+
+        #region Section endpoints
+        
         [HttpPost("createSection")]
         public async Task<IActionResult> CreateSection([FromQuery] CreateSectionCommand command)
         {
@@ -33,6 +36,17 @@ namespace DecorStore.API.Controllers.Category
             return Ok(result);
         }
 
+        [HttpDelete("deleteSection")]
+        public async Task<IActionResult> DeleteSection([FromQuery] DeleteSectionCommand command)
+        {
+            await _mediator.Send(command);
+            return NoContent();
+        }
+
+        #endregion
+
+        #region Category endpoints
+        
         [HttpPost("createCategory")]
         public async Task<IActionResult> CreateCategory([FromQuery] CreateCategoryCommand command)
         {
@@ -40,11 +54,31 @@ namespace DecorStore.API.Controllers.Category
             return Ok(result);
         }
 
+        [HttpDelete("deleteCategory")]
+        public async Task<IActionResult> DeleteCategory([FromQuery] DeleteCategoryCommand command)
+        {
+            await _mediator.Send(command);
+            return NoContent();
+        }
+        #endregion
+
+        #region SubCategory endpoints
+
         [HttpPost("createSubCategory")]
         public async Task<IActionResult> CreateSubCategory([FromQuery] CreateSubCategoryCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpDelete("deleteSubCategory")]
+        public async Task<IActionResult> DeleteSubCategory([FromQuery] DeleteSubCategoryCommand command)
+        {
+            await _mediator.Send(command);
+            return NoContent();
+        }
+
+        #endregion
+        
     }
 }

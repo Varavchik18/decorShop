@@ -58,6 +58,14 @@ public class CategoryRepository : ICategoryRepository
         }
     }
 
+    public void RemoveAggregate(CategoryAggregate aggregate)
+    {
+        _context.Subcategories.RemoveRange(aggregate.Subcategories);
+        _context.Categories.RemoveRange(aggregate.Categories);
+        _context.Sections.Remove(aggregate.Section);
+    }
+
+
     public async Task<List<Section>> GetAllCategoriesAsync()
     {
         var sectionList = await _context.Sections

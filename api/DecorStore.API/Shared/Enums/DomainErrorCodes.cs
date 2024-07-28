@@ -7,6 +7,7 @@ public enum DomainErrorCodes
     CategoryNameIsRequired,
     SubcategoryNameIsRequired,
     SubcategoryNameAlreadyExistInCategory,
-    CategoryNotFound
+    CategoryNotFound,
+    SubcategoryNotFound
 }
 

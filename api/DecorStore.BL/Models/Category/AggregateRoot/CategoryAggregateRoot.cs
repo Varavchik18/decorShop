@@ -24,4 +24,12 @@ public class CategoryAggregate
         _subcategories.Add(subcategory);
     }
 
+    public void RemoveCategory(Category category)
+    {
+        foreach (var subcategory in category.Subcategories)
+        {
+            _subcategories.Remove(subcategory);
+        }
+        _categories.Remove(category);
+    }
 }
