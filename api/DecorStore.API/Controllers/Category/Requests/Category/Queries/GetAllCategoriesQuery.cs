@@ -23,7 +23,7 @@ public class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuer
         var result = await _unitOfWork.Categories.GetAllCategoriesAsync();
 
         if (result is null || result.Count == 0)
-            throw new ArgumentNullException("There is no records for specified entity");
+            throw new KeyNotFoundException("There are no records available.");
 
         return _mapper.Map<List<SectionDto>>(result);
     }
