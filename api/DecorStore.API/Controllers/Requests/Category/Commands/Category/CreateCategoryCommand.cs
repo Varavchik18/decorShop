@@ -30,15 +30,15 @@ namespace DecorStore.API.Controllers.Requests.Category
             if (!await _unitOfWork.Categories.IsCategoryNameUniqueInSectionAsync(request.Name, request.SectionId))
                 errorCodes.Add(DomainErrorCodes.CategoryNameAlreadyExistInSection);
 
-            if (errorCodes.Any())
-            {
-                throw new DomainValidationException(errorCodes);
-            }
 
             var aggregate = await _unitOfWork.Categories.GetBySectionIdAsync(request.SectionId);
             if (aggregate == null)
             {
                 throw new DomainValidationException(new List<DomainErrorCodes> { DomainErrorCodes.SectionNotFound });
+            }
+            if (errorCodes.Any())
+            {
+                throw new DomainValidationException(errorCodes);
             }
 
             var category = new DecorStore.BL.Models.Category { Name = request.Name, SectionId = request.SectionId };
