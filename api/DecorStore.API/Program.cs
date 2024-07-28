@@ -11,7 +11,15 @@ var logger = Log.Logger = new LoggerConfiguration()
 
 builder.Logging.AddSerilog(logger);
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+        .WithOrigins("http://localhost:8080")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -44,6 +52,7 @@ else
     }
 }
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 

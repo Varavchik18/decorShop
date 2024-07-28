@@ -12,12 +12,9 @@ public class CategoryRepository : ICategoryRepository
         _context = context;
     }
 
-    public async Task<CategoryAggregate> GetBySectionIdAsync(int sectionId)
+    public async Task<CategoryAggregate> GetAggregateBySectionIdAsync(int sectionId)
     {
-        var section = await _context.Sections
-            .Include(s => s.Categories)
-            .ThenInclude(c => c.Subcategories)
-            .FirstOrDefaultAsync(s => s.Id == sectionId);
+        var section = await GetSectionBySectionIdAsync(sectionId);
 
         if (section == null)
             return null;
@@ -34,6 +31,21 @@ public class CategoryRepository : ICategoryRepository
 
         return aggregate;
     }
+
+    public async Task<Section> GetSectionBySectionIdAsync(int sectionId)
+    {
+        var section = await _context.Sections
+            .Include(s => s.Categories)
+            .ThenInclude(c => c.Subcategories)
+            .FirstOrDefaultAsync(s => s.Id == sectionId);
+
+
+        if (section is null)
+            return null;
+
+        return section;
+    }
+
 
     public async Task AddAsync(CategoryAggregate aggregate)
     {
@@ -77,6 +89,19 @@ public class CategoryRepository : ICategoryRepository
             return null;
 
         return sectionList;
+    }
+
+    public async Task<Category> GetCategoryByIdAsync(int categoryId)
+    {
+        return await _context.Categories
+            .Include(c => c.Subcategories)
+            .FirstOrDefaultAsync(c => c.Id == categoryId);
+    }
+
+    public async Task<Subcategory> GetSubCategoryByIdAsync(int subCategoryId)
+    {
+        return await _context.Subcategories
+            .FirstOrDefaultAsync(c => c.Id == subCategoryId);
     }
     public async Task<bool> IsCategoryNameUniqueInSectionAsync(string name, int sectionId) => !await _context.Categories.AnyAsync(c => c.Name == name && c.SectionId == sectionId);
 

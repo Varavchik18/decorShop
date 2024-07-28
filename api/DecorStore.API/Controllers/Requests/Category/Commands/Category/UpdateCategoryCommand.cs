@@ -28,7 +28,7 @@ namespace DecorStore.API.Controllers.Requests.Category.Commands
             if (String.IsNullOrWhiteSpace(request.Name))
                 errorCodes.Add(DomainErrorCodes.CategoryNameIsRequired);
             
-            var aggregate = await _unitOfWork.Categories.GetBySectionIdAsync(request.SectionId);
+            var aggregate = await _unitOfWork.Categories.GetAggregateBySectionIdAsync(request.SectionId);
 
             if (aggregate is null)
             {

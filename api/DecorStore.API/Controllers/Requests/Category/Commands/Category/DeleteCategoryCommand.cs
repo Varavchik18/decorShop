@@ -22,7 +22,7 @@ namespace DecorStore.API.Controllers.Requests.Category.Commands
         public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
 
-            var aggregate = await _unitOfWork.Categories.GetBySectionIdAsync(request.SectionId);
+            var aggregate = await _unitOfWork.Categories.GetAggregateBySectionIdAsync(request.SectionId);
             if (aggregate == null)
             {
                 throw new DomainValidationException(new List<DomainErrorCodes> { DomainErrorCodes.SectionNotFound });

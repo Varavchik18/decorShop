@@ -41,7 +41,7 @@ namespace DecorStore.API.Controllers.Requests.Category
                 throw new DomainValidationException(errorCodes);
             }
 
-            var aggregate = await _unitOfWork.Categories.GetBySectionIdAsync(request.SectionId);
+            var aggregate = await _unitOfWork.Categories.GetAggregateBySectionIdAsync(request.SectionId);
             if (aggregate == null)
             {
                 _logger.LogWarning($"Section {request.SectionId} not found");

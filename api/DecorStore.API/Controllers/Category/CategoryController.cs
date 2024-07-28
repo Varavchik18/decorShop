@@ -1,6 +1,7 @@
 ﻿using DecorStore.API.Controllers.Requests.Category;
 using DecorStore.API.Controllers.Requests.Category.Commands;
 using DecorStore.API.Controllers.Requests.Category.Commands.Section;
+using DecorStore.API.Controllers.Requests.Category.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +29,18 @@ namespace DecorStore.API.Controllers.Category
 
 
         #region Section endpoints
-        
+
+        [HttpGet("getSection/{idSection}")]
+        public async Task<IActionResult> GetSectionById([FromRoute] int idSection)
+        {
+            var result = await _mediator.Send(new GetSectionByIdQuery()
+            {
+                SectionId = idSection
+            });
+
+            return Ok(result);
+        }
+
         [HttpPost("createSection")]
         public async Task<IActionResult> CreateSection([FromQuery] CreateSectionCommand command)
         {
@@ -46,7 +58,18 @@ namespace DecorStore.API.Controllers.Category
         #endregion
 
         #region Category endpoints
-        
+
+        [HttpGet("getCategory/{idCategory}")]
+        public async Task<IActionResult> GetCategoryById([FromRoute] int idCategory)
+        {
+            var result = await _mediator.Send(new GetCategoryByIdQuery()
+            {
+                CategoryId = idCategory
+            });
+
+            return Ok(result);
+        }
+
         [HttpPost("createCategory")]
         public async Task<IActionResult> CreateCategory([FromQuery] CreateCategoryCommand command)
         {
@@ -63,6 +86,17 @@ namespace DecorStore.API.Controllers.Category
         #endregion
 
         #region SubCategory endpoints
+
+        [HttpGet("getSubCategory/{idSubCategory}")]
+        public async Task<IActionResult> GetSubCategoryById([FromRoute] int idSubCategory)
+        {
+            var result = await _mediator.Send(new GetSubCategoryByIdQuery()
+            {
+                SubCategoryId = idSubCategory
+            });
+
+            return Ok(result);
+        }
 
         [HttpPost("createSubCategory")]
         public async Task<IActionResult> CreateSubCategory([FromQuery] CreateSubCategoryCommand command)
