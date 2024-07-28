@@ -48,7 +48,7 @@ namespace DecorStore.API.Controllers.Requests.Category
                 throw new DomainValidationException(new List<DomainErrorCodes> { DomainErrorCodes.SectionNotFound });
             }
 
-            var category = aggregate.Categories.FirstOrDefault(c => c.Id == request.CategoryId);
+            var category = aggregate.Section.Categories.FirstOrDefault(c => c.Id == request.CategoryId);
             if (category == null)
             {
                 _logger.LogWarning($"Category {request.CategoryId} not found in section {request.SectionId}");

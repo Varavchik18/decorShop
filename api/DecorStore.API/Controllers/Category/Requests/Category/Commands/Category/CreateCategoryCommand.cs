@@ -44,8 +44,6 @@ namespace DecorStore.API.Controllers.Requests.Category
             var category = new DecorStore.BL.Models.Category { Name = request.Name, SectionId = request.SectionId };
             aggregate.AddCategory(category);
 
-
-
             _logger.LogInformation($"Updating aggregate for section {request.SectionId}");
             await _unitOfWork.Categories.UpdateAsync(aggregate);
             _logger.LogInformation($"Completing unit of work for section {request.SectionId}");
