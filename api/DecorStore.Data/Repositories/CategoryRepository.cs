@@ -1,7 +1,7 @@
 ﻿
+using DecorStore.BL.Models;
 using DecorStore.Data.Shared;
 using Microsoft.EntityFrameworkCore;
-using static System.Collections.Specialized.BitVector32;
 
 public class CategoryRepository : ICategoryRepository
 {
@@ -70,6 +70,7 @@ public class CategoryRepository : ICategoryRepository
 
         return sectionList;
     }
+    public async Task<bool> IsCategoryNameUniqueInSectionAsync(string name, int sectionId) => !await _context.Categories.AnyAsync(c => c.Name == name && c.SectionId == sectionId);
 
     public async Task<bool> IsSectionNameUniqueAsync(string name) => !await _context.Sections.AnyAsync(s => s.Name == name);
 }

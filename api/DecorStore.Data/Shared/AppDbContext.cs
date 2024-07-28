@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DecorStore.BL.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DecorStore.Data.Shared
 {

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DecorStore.BL.Models;
 
 public class MappingProfile : Profile
 {

@@ -1,7 +1,9 @@
-﻿namespace DecorStore.Domain.Exceptions
+﻿
+public enum DomainErrorCodes
 {
-    public enum DomainErrorCodes
-    {
-        SectionNameAlreadyExist
-    }
+    SectionNameAlreadyExist,
+    CategoryNameAlreadyExistInSection,
+    SectionNotFound,
+    CategoryNameIsRequired
 }
+

@@ -1,4 +1,4 @@
-﻿using DecorStore.Domain.Exceptions;
+﻿using DecorStore.BL.Models;
 using MediatR;
 
 namespace DecorStore.API.Controllers.Requests.Category

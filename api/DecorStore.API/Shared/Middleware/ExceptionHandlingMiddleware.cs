@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
-using DecorStore.Domain.Exceptions;
 
 public class ExceptionHandlingMiddleware
 {

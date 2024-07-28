@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-
-[Table("Subcategories_tb", Schema = "Product.Category")]
-public class Subcategory
+namespace DecorStore.BL.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string IconUrl { get; set; }
-    public int CategoryId { get; set; }
-    public Category Category { get; set; }
+    [Table("Subcategories_tb", Schema = "Product.Category")]
+    public class Subcategory
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string IconUrl { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+    }
 }

@@ -1,4 +1,6 @@
-﻿public class CategoryAggregate
+﻿using DecorStore.BL.Models;
+
+public class CategoryAggregate
 {
     public Section Section { get; private set; }
     public IReadOnlyCollection<Category> Categories => _categories.AsReadOnly();
