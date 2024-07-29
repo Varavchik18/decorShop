@@ -19,23 +19,21 @@
         </v-btn>
 
         <template v-slot:extension>
-            <v-tabs v-model="currentItem" grow hide-slider>
-                <v-tab v-for="item in items" :key="item" :text="item"></v-tab>
-
-                <v-menu v-if="more.length">
+            <v-tabs v-model="currentItem" align-tabs="center" hide-slider>
+                <v-menu width="500px" v-if="more.length">
                     <template v-slot:activator="{ props }">
-                        <v-btn class="align-self-center me-4" variant="plain" v-bind="props">
+                        <v-btn class="align-self-center me-4" variant="plain" v-bind="props" >
                             more
-
-                            <v-icon icon="mdi-menu-down" end></v-icon>
                         </v-btn>
                     </template>
 
                     <v-list class="bg-grey-lighten-3">
-                        <v-list-item v-for="item in more" :key="item" :title="item"
-                            @click="addItem(item)"></v-list-item>
+                        <v-list-item v-for="item in more" :key="item" :title="item"></v-list-item>
                     </v-list>
                 </v-menu>
+                <v-tab v-for="item in items" :key="item" :text="item"></v-tab>
+
+
             </v-tabs>
         </template>
     </v-toolbar>
