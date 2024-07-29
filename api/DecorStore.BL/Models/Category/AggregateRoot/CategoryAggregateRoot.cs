@@ -3,6 +3,8 @@
 public class CategoryAggregate
 {
     public Section Section { get; private set; }
+
+    //readonly
     public IReadOnlyCollection<Category> Categories => _categories.AsReadOnly();
     public IReadOnlyCollection<Subcategory> Subcategories => _subcategories.AsReadOnly();
 

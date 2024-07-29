@@ -25,21 +25,27 @@ namespace DecorStore.API.Controllers.Requests.Category.Commands
         {
             var errorCodes = new List<DomainErrorCodes>();
 
-            if (String.IsNullOrWhiteSpace(request.Name))
+            if (string.IsNullOrWhiteSpace(request.Name))
                 errorCodes.Add(DomainErrorCodes.CategoryNameIsRequired);
-            
+
             var aggregate = await _unitOfWork.Categories.GetAggregateBySectionIdAsync(request.SectionId);
 
             if (aggregate is null)
             {
                 errorCodes.Add(DomainErrorCodes.SectionNotFound);
             }
-
-            var category = aggregate.Categories.SingleOrDefault(x=> x.Id == request.CategoryId);
-
-            if(category is null)
+            else
             {
-                errorCodes.Add(DomainErrorCodes.CategoryNotFound);
+                var category = aggregate.Categories.SingleOrDefault(x => x.Id == request.CategoryId);
+
+                if (category is null)
+                {
+                    errorCodes.Add(DomainErrorCodes.CategoryNotFound);
+                }
+                else
+                {
+                    category.Name = request.Name;
+                }
             }
 
             if (errorCodes.Any())
@@ -47,16 +53,14 @@ namespace DecorStore.API.Controllers.Requests.Category.Commands
                 throw new DomainValidationException(errorCodes);
             }
 
-            category.Name = request.Name;
-
             _logger.LogInformation($"Updating aggregate for section {request.SectionId}");
             await _unitOfWork.Categories.UpdateAsync(aggregate);
             _logger.LogInformation($"Completing unit of work for section {request.SectionId}");
             await _unitOfWork.CompleteAsync();
 
-            _logger.LogInformation($"Category with ID {request.CategoryId} deleted successfully from section {request.SectionId}");
+            _logger.LogInformation($"Category with ID {request.CategoryId} updated successfully in section {request.SectionId}");
 
-            return category.Id;
+            return request.CategoryId;
 
 
 

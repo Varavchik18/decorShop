@@ -36,18 +36,27 @@ namespace DecorStore.API.Controllers.Requests.Category.Commands
             {
                 errorCodes.Add(DomainErrorCodes.SectionNotFound);
             }
-
-            var category = aggregate.Categories.SingleOrDefault(x => x.Id == request.CategoryId);
-
-            if (category is null)
+            else
             {
-                errorCodes.Add(DomainErrorCodes.CategoryNotFound);
-            }
+                var category = aggregate.Categories.SingleOrDefault(x => x.Id == request.CategoryId);
 
-            var subCategory = category.Subcategories.SingleOrDefault(x => x.Id == request.SubCategoryId);
-            if(subCategory is null)
-            {
-                errorCodes.Add(DomainErrorCodes.SubcategoryNotFound);
+                if (category is null)
+                {
+                    errorCodes.Add(DomainErrorCodes.CategoryNotFound);
+                }
+                else
+                {
+                    var subCategory = category.Subcategories.SingleOrDefault(x => x.Id == request.SubCategoryId);
+                    if (subCategory is null)
+                    {
+                        errorCodes.Add(DomainErrorCodes.SubcategoryNotFound);
+                    }
+                    else
+                    {
+                        subCategory.Name = request.Name;
+                        subCategory.IconUrl = request.IconUrl;
+                    }
+                }
             }
 
             if (errorCodes.Any())
@@ -55,17 +64,14 @@ namespace DecorStore.API.Controllers.Requests.Category.Commands
                 throw new DomainValidationException(errorCodes);
             }
 
-            subCategory.Name = request.Name;
-            subCategory.IconUrl = request.IconUrl;
-
             _logger.LogInformation($"Updating aggregate for section {request.SectionId}");
             await _unitOfWork.Categories.UpdateAsync(aggregate);
             _logger.LogInformation($"Completing unit of work for section {request.SectionId}");
             await _unitOfWork.CompleteAsync();
 
-            _logger.LogInformation($"Subcategory with ID {request.SubCategoryId} deleted successfully from category {request.CategoryId} in section {request.SectionId}");
+            _logger.LogInformation($"Subcategory with ID {request.SubCategoryId} updated successfully in category {request.CategoryId} in section {request.SectionId}");
 
-            return category.Id;
+            return request.SubCategoryId;
         }
     }
 }
